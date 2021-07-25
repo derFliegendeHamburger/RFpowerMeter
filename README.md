@@ -16,6 +16,7 @@ allows to compare TX antennae against your proven RX antenna; works ok for fpv/a
   * dial in attached (outside of this project) attenuator value
   * tune incremental parameter for bucket computation of PEP
   * toggle BT output on/off
+* various sanity checks to protect the sensor
 
 ## hardware
 * arduino 328p
