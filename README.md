@@ -4,11 +4,11 @@ RF PeakEnvelopePower Meter for AD8317, AD8318 or similar
 allows to compare TX antennae against your proven RX antenna; works ok for fpv/analog video gear. Measuring Peak Envelope Power instead of maximum values or some averaging does effectively eliminate noise from surrounding wifi equipment and it is the right thing to do. Traditional receivers' rssi value is not sensitive enough for this.
 
 ## features
-* update 1 / second
+* update display once per second
 * approx 30.000 samples / second
 * display
-  * minimal and peak envelope power
-  * peak envelope power (including external attenuation) in both dBm and mW
+  * minimal and peak envelope power PEP
+  * PEP (including external attenuation) in both dBm and mW
   * bar graph of PEP
   * trend of PEP (moving average)
 * use rotary encoder to
@@ -28,7 +28,7 @@ allows to compare TX antennae against your proven RX antenna; works ok for fpv/a
 ![p2](p2.png)
 
 ## note/warning
-there are too many flavours and variants of text displays and arduino IDEs with libraries installed (or not). In effect this code is not working out of the box but you have to adapt to your hardware (display and sensor) and cater for suitable libraries
+there are too many flavours and variants of text displays and arduino IDEs with libraries installed (or not). In effect this code is not working out of the box but you have to adapt to your hardware (display and sensor) and cater for suitable libraries yourself
 
 ## licence
 my code is under GPL, my preferred choice. It was inspired and over time copy/pasted from too many other projects to remember and eventually this comes as close as I can get to a complete rewrite. The fastAnalogRead() function was borrowed from its owner as mentioned in source.
