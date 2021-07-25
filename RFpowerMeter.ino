@@ -17,42 +17,7 @@
  *  A0 input for AD8317
  *  display via i2c
  *  
- *  v0.5  first own version
- *  v1.0  ok
- *  v1.1a  analogRead ueber eigenen Ticker
- *  v1.2b  AD8318 an A0 angeschlossen, seltener Display Update, add attn to db values, TL431 for Vref=2.51V
- *  v1.2c slower reads, classic analogRead
- *  v1.2d DEBUG, bar graph
- *  v1.3 Vref=2.50V
- *  v1.3c mW or uW
- *  v1.3d dummy read, check sane voltage range & usable/meaningful db range
- *  v1.3e rename dB to dB+A
- *  v1.4 reverse to dB; try to reduce fluctuation value with sanitize() function (remove # smallest values in interval)
- *  v1.5 4th line: remove bar graph, display peak value dB and mW; formatted W/mW/uW lcd output
- *  v1.5c output reformat
- *  v1.5d peak-db is true peak value from all data
- *        avg-db is arithmetic average from sanitized data (remvove highest 5% to eliminate 50Hz spikes of length 120us)
- *  v1.6 visualize overrun of ANZ array
- *      show avg, peak and raw-peak values
- *      update display every 2seconds, read every 4ms
- *      sanitize lowest and highest values
- *      wechprozent is editable parameter now
- *  v1.6a edit-page: display  rows editable params, dB, mV, analog
- *                        dB value:  min        avg       peak      raw
- *                     4 mV values (sane-max, sane-avg, sane-min, raw-min)
- *      starting with analog value: sane-max  sane-avg  sane-min, raw-min
- *  v1.6b usageScreen shows usage info
- *  v2.0  additional output via softSerial to BT module
- *  v2.0a correct dBm, reformat wattage
- *  v2.0b refactor&rename
- *        truncate only lowest analogRead values (that is highest dBm values). Leave highest analogRead values (that is lowest dBm values) untouched.
- *        compute raw min/max correctly even with wechprozent==0
- *  v2.0c fix 0%
- *  v2.1  as an experiment, do bucket-computation of analogRead data[] and output to BT
- *  v3.0  use bucket-approach to gather PeakEnvelopePower - should successfully ignore (low) spikes; 
- *        from each aRead(), update min and bucket
- *        double click resets min, bucket
- *  v3.0a display trend only after something to feast on exists
+ *  
  *  v3.0b make bucket increment tunable
  *  v3.0c in loop(), do ticker.updates & encoder handling only every nth run
  *  v3.1  begin refactor outputs to lcd and BT
@@ -61,9 +26,9 @@
  *        
  */
 
-#define ENCODER_A_PIN 4 // ec11 encoder A-pin ( ausserdem C-pin gelb und D-button-pin gelb auf graound) blau
-#define ENCODER_B_PIN 3 // ec11 encoder B-pin rot
-#define ENCODER_BTN_PIN 2 // ec11 encoder E-button-pin gruen
+#define ENCODER_A_PIN 4 // ec11 encoder A-pin 
+#define ENCODER_B_PIN 3 // ec11 encoder B-pin 
+#define ENCODER_BTN_PIN 2 // ec11 encoder E-button-pin 
 #define BT_RX_PIN 9 
 #define BT_TX_PIN 8 
 
@@ -124,11 +89,9 @@ int binc = 3;       // bucket increment, tunable
 
 int bt_output = false;
 
-//LiquidCrystal_I2C lcd(0x3F,4,5,6,0,1,2,3,7,NEGATIVE);  //set the LCD I2C address
-LiquidCrystal_I2C lcd(0x3F,2,1,0,4,5,6,7,3,POSITIVE);  // typ 2
-//LiquidCrystal_I2C lcd(0x3F,4,5,6,0,1,2,3,7,POSITIVE);  // typ 1
+LiquidCrystal_I2C lcd(0x3F,2,1,0,4,5,6,7,3,POSITIVE); 
 
-LcdBarGraphX lbg_bucket(&lcd,LCD_COLS,0,2); // 20 Chars, ganz links, zeile 2
+LcdBarGraphX lbg_bucket(&lcd,LCD_COLS,0,2); 
 
 
 ClickEncoder *encoder;
@@ -450,7 +413,7 @@ void setup(){
 
   TWBR = ((F_CPU / 400000) - 16) / 2; // change the I2C clock rate.
 
-  encoder = new ClickEncoder(ENCODER_A_PIN, ENCODER_B_PIN, ENCODER_BTN_PIN, 4); // A, B, BTN, 4=stepsPerNotch fuer meine EC11
+  encoder = new ClickEncoder(ENCODER_A_PIN, ENCODER_B_PIN, ENCODER_BTN_PIN, 4); // A, B, BTN, 4=stepsPerNotch 
   encoder->setAccelerationEnabled(false);
 
   ticker1.start(); //attach(1,cbtick1);
