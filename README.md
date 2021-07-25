@@ -11,6 +11,7 @@ allows to compare TX antennae against your proven RX antenna; works ok for fpv/a
   * PEP (including external attenuation) in both dBm and mW
   * bar graph of PEP
   * trend of PEP (moving average)
+* duplicate display output via serial/BlueTooth to remote handheld with vt100 aware terminal app
 * use rotary encoder to
   * select band and its presets (currently only for 5G8 and 2G4 band)
   * dial in attached (outside of this project) attenuator value
