@@ -23,6 +23,7 @@ allows to compare TX antennae against your proven RX antenna; works ok for fpv/a
 * rotary encoder with button dc11
 * display 4*20 text
 * optional bluetooth module
+* optional TL431 voltage reference
 
 ![p1](p1.png)
 ![p2](p2.png)
