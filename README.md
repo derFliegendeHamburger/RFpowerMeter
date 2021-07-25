@@ -1,7 +1,7 @@
 # RFpowerMeter
 RF PeakEnvelopePower Meter for AD8317, AD8318 or similar
 
-allows to compare TX antennae against your proven RX antenna; works ok for fpv/analog video gear. Measuring Peak Envelope Power instead of maximum values or some averaging does effectively eliminate noise from surrounding wifi equipment and it is the right thing to do. Traditional receivers' rssi value is not sensitive enough for this.
+allows to compare TX antennae against your proven RX antenna; works ok for fpv/analog video gear. Measuring Peak Envelope Power instead of maximum values or some averaging does effectively eliminate noise from surrounding wifi equipment and it is the right thing to do. Traditional receivers' rssi value is not sensitive enough for comparison.
 
 ## features
 * update display once per second
